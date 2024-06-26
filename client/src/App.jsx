@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
+import { UserAuthContextProvider } from '../Auth/UserAuthContext';
 
 const App = () => {
   return (
-    <Router>
+    <UserAuthContextProvider>
+       <Router>
       <nav>
         <ul>
           <li><Link to="/login">Login</Link></li>
@@ -26,6 +28,8 @@ const App = () => {
         } />
       </Routes>
     </Router>
+      
+    </UserAuthContextProvider>
   );
 };
 
