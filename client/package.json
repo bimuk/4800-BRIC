@@ -12,6 +12,7 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "firebase": "^10.12.2",
+    "next-barcode": "^1.5.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-google-button": "^0.8.0",
