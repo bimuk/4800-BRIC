@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
 import Slideshow from './components/Slideshow';
+import CrowdMeter from './components/CrowdMeter';
 
 const App = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -22,6 +23,7 @@ const App = () => {
     { text: 'Login', path: '/login' },
     { text: 'Signup', path: '/signup' },
     { text: 'Dashboard', path: '/dashboard' },
+    { text: 'Crowd Meter', path: '/crowdmeter' },
   ];
 
   return (
@@ -53,6 +55,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/crowdmeter" element={<CrowdMeter />} />
           <Route path="/" element={
             <Box className="container">
               <div className="overlay"></div>
