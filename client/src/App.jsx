@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import { AppBar, Toolbar, IconButton, Typography, Drawer, List, ListItem, ListItemText, CssBaseline, Container } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Typography, Drawer, List, ListItem, ListItemText, CssBaseline, Container, Box } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
+import Slideshow from './components/Slideshow';
 
 const App = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -17,7 +18,7 @@ const App = () => {
   };
 
   const menuItems = [
-    { text: 'Home', path: '/'},
+    { text: 'Home', path: '/' },
     { text: 'Login', path: '/login' },
     { text: 'Signup', path: '/signup' },
     { text: 'Dashboard', path: '/dashboard' },
@@ -46,16 +47,20 @@ const App = () => {
         </List>
       </Drawer>
       <Toolbar />
-      <Container>
+      <Slideshow />
+      <Container className="container">
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/" element={
-            <div>
-              <h1>Welcome to the BRIC!</h1>
-              <p>Use the navigation menu to log in or sign up.</p>
-            </div>
+            <Box className="container">
+              <div className="overlay"></div>
+              <Box className="text-box">
+                <Typography variant="h4">Welcome to the BRIC!</Typography>
+                <Typography variant="body1">Use the navigation menu to log in or sign up.</Typography>
+              </Box>
+            </Box>
           } />
         </Routes>
       </Container>

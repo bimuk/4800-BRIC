@@ -15,8 +15,8 @@ const Dashboard = () => {
   };
 
   return (
-    <Container component="main" maxWidth="sm">
-      <Box sx={{ mt: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <Container component="main" maxWidth="sm" className="container">
+      <Box className="form-container">
         <Typography component="h1" variant="h5">
           Dashboard
         </Typography>
