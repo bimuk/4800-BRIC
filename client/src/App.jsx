@@ -17,6 +17,7 @@ const App = () => {
   };
 
   const menuItems = [
+    { text: 'Home', path: '/'},
     { text: 'Login', path: '/login' },
     { text: 'Signup', path: '/signup' },
     { text: 'Dashboard', path: '/dashboard' },
