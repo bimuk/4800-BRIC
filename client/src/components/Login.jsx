@@ -15,7 +15,7 @@ const Login = () => {
       await signInWithEmailAndPassword(auth, email, password);
       navigate('/dashboard');
     } catch (error) {
-      console.error('Error logging in:', error);
+      alert('Loggin in failed Please check your user name and password');
     }
   };
 
