@@ -4,14 +4,22 @@ import { auth } from '../firebaseConfig';
 import BarcodeGenerator from './BarcodeGenerator';
 import { useNavigate } from 'react-router-dom';
 import { Button, Box, Typography, Container } from '@mui/material';
+import * as firebase from 'firebase/app'; 
+
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    await auth.signOut();
-    navigate('/login');
+    try {
+      await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+      await firebase.auth().signOut();
+      navigate('/login');
+    } catch (error) {
+      console.error('Error logging out:', error);
+      alert('Error logging out');
+    }
   };
 
   return (
@@ -21,6 +29,7 @@ const Dashboard = () => {
           Dashboard
         </Typography>
         {user ? (
+          // having issue with the redirecting 
           <div>
             <Typography variant="body1" sx={{ mt: 2 }}>
               Welcome, {user.email}

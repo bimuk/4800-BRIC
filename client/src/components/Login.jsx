@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { TextField, Button, Box, Typography, Container } from '@mui/material';
 
 const Login = () => {
+  const [rememberMe, setRemeberMe] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      await Firebase.auth().setPersistence(rememberMe ? firebase.auth.Auth.Persistence.LOCAL : firebase.auth.Auth.Persistence.SESSION);
       await signInWithEmailAndPassword(auth, email, password);
       navigate('/dashboard');
     } catch (error) {
@@ -25,6 +27,7 @@ const Login = () => {
         <Typography component="h1" variant="h5">
           Login
         </Typography>
+
         <Box component="form" onSubmit={handleLogin} sx={{ mt: 1 }}>
           <TextField
             margin="normal"
@@ -50,6 +53,14 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <label>
+            <input  
+              type="checkbox"
+              checked={rememberMe}
+              onChange={(e) => setRemeberMe(e.target.checked)}
+              />
+            Remember Me
+          </label>
           <Button
             type="submit"
             fullWidth
