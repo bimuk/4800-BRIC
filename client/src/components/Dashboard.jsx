@@ -4,7 +4,6 @@ import { auth } from '../firebaseConfig';
 import BarcodeGenerator from './BarcodeGenerator';
 import { useNavigate } from 'react-router-dom';
 import { Button, Box, Typography, Container } from '@mui/material';
-import * as firebase from 'firebase/app'; 
 
 
 const Dashboard = () => {
@@ -13,8 +12,7 @@ const Dashboard = () => {
 
   const handleLogout = async () => {
     try {
-      await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
-      await firebase.auth().signOut();
+      // await firebase.auth().signOut();
       navigate('/login');
     } catch (error) {
       console.error('Error logging out:', error);
